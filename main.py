@@ -11,7 +11,7 @@ import random
 #starting stuff
 cash = .10
 money_per_sec = .10
-test_stock = 10.00
+test_stock = random.randfloat(0.00 - 100.00)
 
 
 while True:
@@ -32,6 +32,9 @@ while True:
         cash += time_passed * money_per_sec
         cash = round(cash, 2)
         #stock Market stuff
+
+        print("Some stocks that are out right now: ")
+        print("The company Test_Stock has a current stock value of " + str(test_stock) )
 
     else:
         print('error')
