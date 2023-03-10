@@ -1,6 +1,6 @@
 """current goals include: 
 1. create a variable that can increase in the backgound while other things happen DONE
-2. create an investing system for stock DONE (just need to add more stocks to play with)
+2. create an investing system for stock DONE (need to add more stock options tho)
 3. allow players to buy things, like houses and cars and stuff
 4. allow player to use things like crypto in a fluctuating market.
 5. Create a way to see their Net Worth (their money in all even tied up in houses, cars, crypto, or stock)
@@ -15,13 +15,15 @@ Amazon = round(random.uniform(0.00, 1000.00), 2)
 stock_in_amazon = 0
 WallMart = round(random.uniform(0.00, 75.00), 2)
 stock_in_wallmart = 0
-companies = ['Amazon', 'WallMart']
+Microsoft = round(random.uniform(0.00, 500.00), 2)
+stock_in_micro = 0
+companies = ['Amazon', 'WallMart', 'Microsoft']
 
 while True:
     start_time = time()
     
     user_input = input('What would you like to do? 1. Check your Money, 2. Look at the stock Market, 3. Look at the news, 4. Look at your stocks ')
-
+#your money
     if user_input == '1':
         #updating cash and showing the user their balance
         time_passed = round(time() - start_time)
@@ -37,8 +39,9 @@ while True:
         #stock Market stuff
 
         print("Some stocks that are out right now: ")
-        print("1. The company Amazon has a current stock value of " + str(Amazon) )
+        print(f"1. The company Amazon has a current stock value of " + str(Amazon) )
         print(f"2. The company WallMart has a current stock value of {WallMart}")
+        print(f"3. The company Microsoft has a current stock value of {Microsoft}")
         invest = input('Would you like to invest? y/n ')
         if invest == 'y':
             company = input("What company would you like to invest in? ")
@@ -81,6 +84,24 @@ while True:
                     print('You did not buy a WallMart Stock')
                 else:
                     print('error, you will not get the stock right now, try again')
+            elif company == 'placeholder':
+                buy_or_no = input(f"Would You Like to Buy a Microsoft Stock for {Microsoft} y/n: ")
+                if buy_or_no == 'y' or 'yes':
+                    if cash > Microsoft:
+                        many = int(input("How many Microsoft stocks would you like to buy? "))
+                        if many * Microsoft <= cash:
+                            cash -= Microsoft * many
+                            stock_in_micro += many
+                        elif many * Microsoft > cash:
+                            print("You can't afford that many Microsoft Stocks")
+                        else:
+                            print(SyntaxError)
+                elif buy_or_no == 'n' or 'no':
+                    print('You did not buy a Microsoft Stock')
+                else:
+                    print('error, you will not get the stock right now, try again')
+            else:
+                print('error')
         #nothing happens
         else:
             print('Just looking today I see.')
@@ -97,6 +118,8 @@ while True:
                 Amazon += 1.50
             elif news == 'WallMart':
                 WallMart += 1.50
+            elif news == 'Microsoft':
+                Microsoft += 1.50
             else:
                 print(SyntaxError)   
         #really good
@@ -106,6 +129,8 @@ while True:
                 Amazon += 10
             elif news == 'WallMart':
                 WallMart += 10
+            elif news == 'Microsoft':
+                Microsoft += 10
             else:
                 print(SyntaxError)
         #nothing happens
@@ -118,6 +143,8 @@ while True:
                 Amazon -= 1.50
             elif news == 'WallMart':
                 WallMart -= 1.50
+            elif news == 'Microsoft':
+                Microsoft -= 1.50
             else:
                 print(SyntaxError)
         #really bad
@@ -127,17 +154,24 @@ while True:
                 Amazon -= 10.50
             elif news == 'WallMart':
                 WallMart -= 10.50
+            elif news == 'Microsoft':
+                Microsoft -= 10.50
             else:
                 print(SyntaxError)
         else:
             print(SyntaxError)
     #look at your stocks
     elif user_input == "4":
-        print(f"You have {stock_in_wallmart} stocks in WallMart")
-        print(f"You have {stock_in_amazon} stocks in Amazon")
+        print(f"You have {stock_in_wallmart} stocks in WallMart worth " + str(stock_in_wallmart * WallMart))
+        print(f"You have {stock_in_amazon} stocks in Amazon worth " + str(stock_in_amazon * Amazon))
+        print(f"You have {stock_in_micro} stocks in Microsoft worth" + str(stock_in_micro * Microsoft))
+        
+        total = stock_in_wallmart * WallMart + stock_in_amazon * Amazon + stock_in_micro * Microsoft
+        
+        print(f"your total stock portfolio value is {total}")
         sell = input("would you like to sell any stock? y/n ")
         if sell == 'y':
-            whichOne = input('You can sell, 1. WallMart or 2. Amazon: ')
+            whichOne = input('You can sell, 1. WallMart or 2. Amazon or 3. Microsoft: ')
             #wallamrt
             if whichOne == '1':
                 print("how many do you want to sell?")
@@ -160,6 +194,17 @@ while True:
                     print(f"you sold {how_many} stocks Amazon")
                     cash += how_many * Amazon
                     stock_in_amazon -= how_many
+                else:
+                    print(SyntaxError)
+            elif whichOne == "3":
+                print("how many do you want to sell?")
+                how_many = int(input())
+                if how_many > stock_in_micro:
+                    print('You don\'t have that many stocks in Microsoft!')
+                elif how_many <= stock_in_micro:
+                    print(f"you sold {how_many} stocks Microsoft")
+                    cash += how_many * Microsoft
+                    stock_in_micro -= how_many
                 else:
                     print(SyntaxError)
         elif sell == 'n':
