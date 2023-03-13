@@ -14,6 +14,8 @@
     1 will instead be advance to next day, every day you make 10 dollars passively (which can be increased later)
     and the stock markets will randomly increase (or decrase depending on the headline) for that week and every 
     company will get a headline per (length of time), also the length of time should vary.
+
+Good Luck!
 """
 from time import time
 import random
