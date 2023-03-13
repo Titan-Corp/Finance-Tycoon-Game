@@ -1,9 +1,19 @@
 """current goals include: 
-1. create a variable that can increase in the backgound while other things happen DONE
-2. create an investing system for stock DONE (need to add more stock options tho)
+1. DONE
+2. Add more news options! (such as a news option that randomly boosts or drops multiple stocks at once)
 3. allow players to buy things, like houses and cars and stuff
 4. allow player to use things like crypto in a fluctuating market.
 5. Create a way to see their Net Worth (their money in all even tied up in houses, cars, crypto, or stock)
+6. make the list of stocks you own only show companies you have money in
+7. When you check your stock portfolio, it should tell you if you are overall 
+                                                    gaining or loosing money since your last check
+                                                    
+*IMPORTANT CHANGE I WANT TO MAKE WITH THE NEWS and other stuff*
+    instead of having companies randomly go up and down the headlines should instead be like 
+    'It is going to be A good week for _______' then instead of having "option 1." be check your money, 
+    1 will instead be advance to next day, every day you make 10 dollars passively (which can be increased later)
+    and the stock markets will randomly increase (or decrase depending on the headline) for that week and every 
+    company will get a headline per (length of time), also the length of time should vary.
 """
 from time import time
 import random
@@ -34,15 +44,22 @@ def get_money_change(start, end, money_per_sec):
     return round(cash, 2)
 
 # Initialize Varibles
-cash = 100.00
-money_per_sec = .10
+cash = 500.00
+money_per_sec = .50
 
 # Stocks
 companies = []
-
-companies.append(Company('Amazon', round(random.uniform(0.00, 1000.00), 2))) # Create Amazon
-companies.append(Company('Walmart', round(random.uniform(0.00, 75.00), 2))) # Creat Walmart
+# Semi-Real values right now
+companies.append(Company('Amazon', round(random.uniform(90.00, 170.00), 2))) # Create Amazon
+companies.append(Company('Walmart', round(random.uniform(100.00, 160.00), 2))) # Creat Walmart
 companies.append(Company('Microsoft', round(random.uniform(0.00, 500.00), 2))) # Create Microsoft
+companies.append(Company('Publix', round(random.uniform(50.00, 100.00), 2))) # Create Publix
+companies.append(Company("McDonald's", round(random.uniform(200.00, 350.00), 2))) # Create McDonald's
+companies.append(Company('Tesla', round(random.uniform(1000.00, 2000.00), 2))) # Create Tesla
+companies.append(Company('Dow Jones Industrial', round(random.uniform(28000.00, 35000.00), 2))) # Create Dow Jones
+companies.append(Company('Meta', round(random.uniform(89.00, 325.00), 2))) # Create Meta
+companies.append(Company('Advanced Micro Devices (AMD)', round(random.uniform(55.00, 120.00), 2))) # Create AMD
+companies.append(Company('Netflix', round(random.uniform(292.00, 385.00), 2))) # Create Netflix
 
 # Game Loop
 while True:
@@ -136,12 +153,12 @@ while True:
                 # Bad
                 case 4:
                     print(f'you see the news, looks like the company {companies[news - 1].name} is loosing money on some projects')
-                    companies[news - 1].update_stocks(round(random.uniform(0, 1.50), 2))
+                    companies[news - 1].update_stocks(round(random.uniform(0, -1.50), 2)) #loosing money
 
                 # Really bad
                 case 5:
                     print(f'you see the news, looks like the company {companies[news - 1].name} has workers on strike!')
-                    companies[news - 1].update_stocks(round(random.uniform(0, 10.50), 2))
+                    companies[news - 1].update_stocks(round(random.uniform(0, -10.50), 2)) #loosing a lot of money
 
         # Look at Your Stocks
         case '4':
