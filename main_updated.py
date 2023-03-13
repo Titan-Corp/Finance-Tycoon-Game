@@ -122,12 +122,12 @@ while True:
                 # Good
                 case 1:
                     print(f'You see the news, looks like the company {companies[news - 1].name} has Released a new product that is going well!')
-                    companies[news - 1].update_stocks(1.50) # Making Money
+                    companies[news - 1].update_stocks(round(random.uniform(0, 1.50), 2)) # Making Money
 
                 # Really Good
                 case 2:
                     print(f'You see the news, looks like the company {companies[news - 1].name} has a released a new product that is going really well!')
-                    companies[news - 1].update_stocks(10) # Making A Lot Of Money
+                    companies[news - 1].update_stocks(round(random.uniform(0, 10.50), 2)) # Making A Lot Of Money
 
                 # Nothing happens
                 case 3:
@@ -136,12 +136,12 @@ while True:
                 # Bad
                 case 4:
                     print(f'you see the news, looks like the company {companies[news - 1].name} is loosing money on some projects')
-                    companies[news - 1].update_stocks(-1.50)
+                    companies[news - 1].update_stocks(round(random.uniform(0, 1.50), 2))
 
                 # Really bad
                 case 5:
                     print(f'you see the news, looks like the company {companies[news - 1].name} has workers on strike!')
-                    companies[news - 1].update_stocks(-10.50)
+                    companies[news - 1].update_stocks(round(random.uniform(0, 10.50), 2))
 
         # Look at Your Stocks
         case '4':
@@ -175,12 +175,12 @@ while True:
                     print('Invalid Company')
 
                 else:
-                    how_many = int(input(f'How many {companies[which_one - 1]} stocks do you want to sell? '))
+                    how_many = int(input(f'How many do you want to sell? '))
                     
                     if how_many > companies[which_one - 1].stocks:
                         print('You don\'t have that many stocks in WallMart!')
                     elif how_many <= companies[which_one - 1].stocks:
-                        print(f"You sold {how_many} stocks {companies[which_one - 1].name}")
+                        print(f"You sold {how_many} stocks in {companies[which_one - 1].name}")
 
                         cash += how_many * companies[which_one - 1].stock_price
                         companies[which_one - 1].buy_stocks(how_many * -1)
