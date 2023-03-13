@@ -1,10 +1,6 @@
-"""current goals include: 
-1. create a variable that can increase in the backgound while other things happen DONE
-2. create an investing system for stock DONE (need to add more stock options tho)
-3. allow players to buy things, like houses and cars and stuff
-4. allow player to use things like crypto in a fluctuating market.
-5. Create a way to see their Net Worth (their money in all even tied up in houses, cars, crypto, or stock)
-"""
+#    *DISCLAIMER THIS IS NOT THE MOST CURRENT VERSION OF THE CODE!!!*
+
+
 from time import time
 import random
 
@@ -213,3 +209,4 @@ while True:
             print(SyntaxError)
     else:
         print('error, try again')
+        
