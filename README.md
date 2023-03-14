@@ -1,4 +1,4 @@
-# Fiance-Tycoon-Game
+# Finance-Tycoon-Game
 Titan thought it would be fun to make a game :)
 
 Main is my OG code, no fixes nothing
