@@ -6,3 +6,5 @@ Main is my OG code, no fixes nothing
 Main.Updated is Chase's cleaned-up version of my code
 
 Main.Updated.Updated is Chase's newest (currently not working) version of the code
+
+https://github.com/Titan-Corp/Finance-Tycoon-Game/wiki for the release calendar
